@@ -12,3 +12,7 @@ html,body{
 	position: absolute;
 	z-index: 1000;
 }
+
+.cartodb-zoom{
+	top:15px;
+}

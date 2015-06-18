@@ -11,31 +11,14 @@ var Chequeado;
 
     Chequeado.map;
 
-    Chequeado.cartoUrl = 'https://chequeado.cartodb.com/api/v2_1/viz/ad0725e6-1543-11e5-9e22-0e9d821ea90d/viz.json';
-
     Chequeado.mainLayer;
 
-    Chequeado.init = function(mainLayer){
+    Chequeado.init = function(cartoUrl, mainLayer){
 
-		cartodb.createVis('chequeado-map', Chequeado.cartoUrl)
+		cartodb.createVis('chequeado-map', cartoUrl)
 		  .done(function(vis, layers) {
 		    
 		  	Chequeado.mainLayer = layers[1];
-
-		    // layer 0 is the base layer, layer 1 is cartodb layer
-		    // when setInteraction is disabled featureOver is triggered
-		    //Chequeado.mainLayer.setInteraction(true);
-		    
-		    /*layers[1].on('featureOver', function(e, latlng, pos, data, layerNumber) {
-		      console.log(e, latlng, pos, data, layerNumber);
-		    });*/
-
-		    // you can get the native map to work with it
-		    //Chequeado.map = vis.getNativeMap();
-
-		    // now, perform any operations you need, e.g. assuming map is a L.Map object:
-/*		    Chequeado.map.setZoom(3);
-		    Chequeado.map.panTo([50.5, 30.5]);*/
 
 		    Chequeado.showLayer(mainLayer);
 
@@ -59,12 +42,15 @@ var Chequeado;
 
         switch (layerToShow) {
             case "agua_1991":
+            case "cloaca_1991":
                 selected = Chequeado.mainLayer.getSubLayer(0);
                 break;
             case "agua_2001":
+            case "cloaca_2001":
                 selected = Chequeado.mainLayer.getSubLayer(1);
                 break;
             case "agua_2010":
+            case "cloaca_2010":
                 selected = Chequeado.mainLayer.getSubLayer(2);
                 break;
         }

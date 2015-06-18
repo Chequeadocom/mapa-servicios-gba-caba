@@ -54,21 +54,28 @@ var Chequeado;
     	$('.year-selector#'+layerToShow).addClass('active disabled');
 
         //turn off all layers
-        Chequeado.mainLayer.getSubLayers().forEach(function(i) {
-            i.hide()
-        });
+
+        var selected;
 
         switch (layerToShow) {
             case "agua_1991":
-                Chequeado.mainLayer.getSubLayer(0).show();
+                selected = Chequeado.mainLayer.getSubLayer(0);
                 break;
             case "agua_2001":
-                Chequeado.mainLayer.getSubLayer(1).show();
+                selected = Chequeado.mainLayer.getSubLayer(1);
                 break;
             case "agua_2010":
-                Chequeado.mainLayer.getSubLayer(2).show();
+                selected = Chequeado.mainLayer.getSubLayer(2);
                 break;
         }
+
+        selected.show();
+
+        Chequeado.mainLayer.getSubLayers().forEach(function(i) {
+        	if(i!=selected){
+            	i.hide()
+        	}
+        });
 
         return true;
     };

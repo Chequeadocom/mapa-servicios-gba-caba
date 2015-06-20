@@ -8,11 +8,10 @@ html,body{
 }
 
 #button-container{
-	width: 100%;
 	position: absolute;
 	z-index: 1000;
+	right: 20px;
+	top: 93px;
 }
 
-.cartodb-zoom{
-	top:15px;
-}
+
